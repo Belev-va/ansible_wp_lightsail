@@ -1,0 +1,14 @@
+- name: Check if bitnami-ssl.conf exists
+  stat:
+    path: /opt/bitnami/apache2/conf/bitnami/bitnami-ssl.conf
+  register: ssl_conf
+
+- name: Disable bitnami-ssl.conf
+  command: mv /opt/bitnami/apache2/conf/bitnami/bitnami-ssl.conf /opt/bitnami/apache2/conf/bitnami/bitnami-ssl.conf.disabled
+  when: ssl_conf.stat.exists
+
+- name: Hide SSL Include in bitnami.conf
+  replace:
+    path: /opt/bitnami/apache2/conf/bitnami/bitnami.conf
+    regexp: '^(Include "/opt/bitnami/apache2/conf/bitnami/bitnami-ssl.conf")'
+    replace: '# \1'

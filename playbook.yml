@@ -1,0 +1,6 @@
+- name: Configure Bitnami WordPress
+  hosts: bitnami
+  become: yes
+
+  roles:
+    - bitnami_wordpress

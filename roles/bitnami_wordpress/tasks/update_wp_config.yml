@@ -1,0 +1,14 @@
+- name: Remove old WP_HOME and WP_SITEURL definitions
+  lineinfile:
+    path: /opt/bitnami/wordpress/wp-config.php
+    regexp: "define\\( ?'WP_(HOME|SITEURL)', ?'[^']+' ?\\);"
+    state: absent
+
+- name: Add new WP_HOME and WP_SITEURL
+  lineinfile:
+    path: /opt/bitnami/wordpress/wp-config.php
+    insertbefore: "define\\( 'WP_AUTO_UPDATE_CORE', 'minor' \\);"
+    line: |
+      define( 'WP_HOME', 'https://www.flure.com/testing-blog-1' );
+      define( 'WP_SITEURL', 'https://www.flure.com/testing-blog-1' );
+  notify: Restart Apache

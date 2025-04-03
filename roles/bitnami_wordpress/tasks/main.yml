@@ -1,0 +1,19 @@
+---
+- name: Ping
+  ansible.builtin.ping:
+
+- name: Display text
+  debug:
+    msg: "The role bitnami_wordpress is running!"
+
+- name: Update WP configuration
+  include_tasks: update_wp_config.yml
+
+- name: Update vhost
+  include_tasks: update_vhost.yml
+
+- name: Disable SSL
+  include_tasks: disable_ssl.yml
+
+- name: Update .htaccess
+  include_tasks: update_htaccess.yml

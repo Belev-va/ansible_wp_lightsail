@@ -1,0 +1,5 @@
+- name: Update wordpress-vhost.conf
+  template:
+    src: wordpress-vhost.conf.j2
+    dest: /opt/bitnami/apache2/conf/vhosts/wordpress-vhost.conf
+  notify: Restart Apache

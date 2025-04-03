@@ -1,0 +1,5 @@
+- name: Update .htaccess
+  template:
+    src: htaccess.j2
+    dest: /opt/bitnami/wordpress/.htaccess
+  notify: Restart Apache

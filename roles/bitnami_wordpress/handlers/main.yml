@@ -1,0 +1,2 @@
+- name: Restart Apache
+  command: /opt/bitnami/ctlscript.sh restart apache
