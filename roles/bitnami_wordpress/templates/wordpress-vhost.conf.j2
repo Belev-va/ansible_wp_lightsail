@@ -8,7 +8,7 @@
         Require all granted
     </Directory>
 
-    Alias /testing-blog-1/ "/opt/bitnami/wordpress/"
+    Alias {{ wp_alias_path }} "/opt/bitnami/wordpress/"
 
     <Directory "/opt/bitnami/wordpress">
         AllowOverride All

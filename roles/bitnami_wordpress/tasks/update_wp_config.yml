@@ -5,10 +5,10 @@
     state: absent
 
 - name: Add new WP_HOME and WP_SITEURL
-  lineinfile:
+  blockinfile:
     path: /opt/bitnami/wordpress/wp-config.php
     insertbefore: "define\\( 'WP_AUTO_UPDATE_CORE', 'minor' \\);"
-    line: |
-      define( 'WP_HOME', 'https://www.flure.com/testing-blog-1' );
-      define( 'WP_SITEURL', 'https://www.flure.com/testing-blog-1' );
+    block: |
+      define( 'WP_HOME', '{{ wp_home }}' );
+      define( 'WP_SITEURL', '{{ wp_siteurl }}' );
   notify: Restart Apache
