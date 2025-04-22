@@ -1,5 +1,5 @@
 - name: Setup PHP-FPM
   template:
-    src: memory.conf.j2
+    src: php_memory.conf.j2
     dest: /opt/bitnami/php/etc/memory.conf
   notify: Restart PHP-FPM
