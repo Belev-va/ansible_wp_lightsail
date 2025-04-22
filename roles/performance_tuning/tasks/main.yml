@@ -1,0 +1,4 @@
+- import_tasks: apache.yml
+- import_tasks: php_fpm.yml
+- import_tasks: php_opcache.yml
+- import_tasks: mariadb.yml

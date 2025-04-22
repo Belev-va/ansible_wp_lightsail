@@ -1,0 +1,9 @@
+---
+- name: Tune MariaDB memory configuration
+  template:
+    src: db_memory.conf.j2
+    dest: /opt/bitnami/mariadb/conf/bitnami/memory.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart MariaDB

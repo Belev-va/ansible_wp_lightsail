@@ -1,0 +1,18 @@
+[mysqld]
+# Query log tuning
+long_query_time = 1
+query_cache_size = 0
+
+# InnoDB tuning
+innodb_buffer_pool_size = {{ innodb_buffer_pool_size }}
+
+# Connections tuning
+max_connections = {{ max_connections }}
+max_user_connections = {{ max_user_connections }}
+
+# Optional settings (can uncomment if needed)
+# wait_timeout = 120
+# innodb_log_file_size = 128M
+# innodb_flush_method = O_DIRECT
+# tmp_table_size = 64M
+# key_buffer_size = 64M

@@ -1,0 +1,21 @@
+- name: Create swap file
+  command: fallocate -l 1G /swapfile
+  args:
+    creates: /swapfile
+
+- name: Set permissions on swap file
+  file:
+    path: /swapfile
+    mode: '0600'
+
+- name: Create swap area
+  command: mkswap /swapfile
+
+- name: Enable swap
+  command: swapon /swapfile
+
+- name: Add to /etc/fstab
+  lineinfile:
+    path: /etc/fstab
+    line: "/swapfile swap swap defaults 0 0"
+    state: present

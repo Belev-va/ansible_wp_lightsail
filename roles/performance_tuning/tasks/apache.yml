@@ -1,0 +1,6 @@
+---
+- name: Update Apache config
+  template:
+    src: apache.conf.j2
+    dest: /opt/bitnami/apache/conf/bitnami/httpd.conf
+  notify: Restart Apache

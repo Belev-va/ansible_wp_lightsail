@@ -1,0 +1,24 @@
+<IfModule mpm_event_module>
+  ServerLimit {{ server_limit }}
+  StartServers {{ start_servers }}
+  MinSpareThreads {{ min_spare_threads }}
+  MaxSpareThreads {{ max_spare_threads }}
+  ThreadsPerChild {{ threads_per_child }}
+  MaxRequestWorkers {{ max_request_workers }}
+  MaxConnectionsPerChild 3000
+  KeepAliveTimeout 2
+</IfModule>
+
+<IfModule mpm_prefork_module>
+  StartServers {{ start_servers }}
+  MinSpareServers {{ min_spare_servers | default(5) }}
+  MaxSpareServers {{ max_spare_servers | default(10) }}
+  MaxRequestWorkers {{ max_request_workers }}
+  MaxConnectionsPerChild 3000
+  KeepAliveTimeout 1
+</IfModule>
+
+<IfModule mod_passenger.c>
+  PassengerMinInstances 1
+  PassengerMaxPoolSize 3
+</IfModule>

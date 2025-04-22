@@ -1,0 +1,46 @@
+---
+- name: Configure PHP OPcache settings
+  block:
+    - name: Set OPcache enable
+      lineinfile:
+        path: /opt/bitnami/php/etc/php.ini
+        regexp: '^opcache.enable\s*='
+        line: "opcache.enable = {{ opcache_enable }}"
+        backup: yes
+
+    - name: Set OPcache CLI enable
+      lineinfile:
+        path: /opt/bitnami/php/etc/php.ini
+        regexp: '^opcache.enable_cli\s*='
+        line: "opcache.enable_cli = {{ opcache_enable_cli }}"
+        backup: yes
+
+    - name: Set OPcache memory consumption
+      lineinfile:
+        path: /opt/bitnami/php/etc/php.ini
+        regexp: '^opcache.memory_consumption\s*='
+        line: "opcache.memory_consumption = {{ opcache_memory_consumption }}"
+        backup: yes
+
+    - name: Set OPcache max accelerated files
+      lineinfile:
+        path: /opt/bitnami/php/etc/php.ini
+        regexp: '^opcache.max_accelerated_files\s*='
+        line: "opcache.max_accelerated_files = {{ opcache_max_accelerated_files }}"
+        backup: yes
+
+    - name: Set OPcache revalidate frequency
+      lineinfile:
+        path: /opt/bitnami/php/etc/php.ini
+        regexp: '^opcache.revalidate_freq\s*='
+        line: "opcache.revalidate_freq = {{ opcache_revalidate_freq }}"
+        backup: yes
+
+    - name: Set OPcache fast shutdown
+      lineinfile:
+        path: /opt/bitnami/php/etc/php.ini
+        regexp: '^opcache.fast_shutdown\s*='
+        line: "opcache.fast_shutdown = {{ opcache_fast_shutdown }}"
+        backup: yes
+
+  notify: Restart PHP-FPM

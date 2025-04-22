@@ -1,0 +1,28 @@
+---
+# Apache
+server_limit: 2
+start_servers: 1
+min_spare_threads: 32
+max_spare_threads: 64
+threads_per_child: 32
+max_request_workers: 64
+
+# PHP-FPM
+pm_max_children: 4
+pm_start_servers: 2
+pm_min_spare_servers: 2
+pm_max_spare_servers: 4
+pm_max_requests: 500
+
+# MariaDB
+innodb_buffer_pool_size: 64M
+max_connections: 50
+max_user_connections: 10
+
+# OPcache tuning
+opcache_enable: 1
+opcache_enable_cli: 1
+opcache_memory_consumption: 64
+opcache_max_accelerated_files: 4000
+opcache_revalidate_freq: 60
+opcache_fast_shutdown: 1

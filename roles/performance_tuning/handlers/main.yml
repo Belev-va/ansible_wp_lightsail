@@ -1,0 +1,12 @@
+---
+- name: Restart Apache
+  command: /opt/bitnami/ctlscript.sh restart apache
+
+- name: Restart PHP-FPM
+  command: /opt/bitnami/ctlscript.sh restart php-fpm
+
+- name: Restart MySQL
+  command: /opt/bitnami/ctlscript.sh restart mysql
+
+- name: Restart MariaDB
+  command: /opt/bitnami/ctlscript.sh restart mariadb
